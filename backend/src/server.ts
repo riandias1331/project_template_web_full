@@ -3,7 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import userRoutes from "./routes/userRoutes"
 import authRoutes from './routes/authRoutes';
-import pool, { connectDB } from './config/db';
+import pool, { connectMongo } from './config/db';
 import createUserTable from './data/createUserTable';
 import path from "path"
 // import errorHandler from './middlewares/errorHandler'
@@ -55,7 +55,7 @@ app.get('/health/db', async (_req, res) => {
 (async () => {
   try {
     // testar mongo
-    await connectDB();
+    await connectMongo();
 
     // testar postgres
     await pool.query('SELECT 1');
