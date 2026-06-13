@@ -1,7 +1,7 @@
 import { Router } from 'express';
 const route: Router = Router();
 
-import { getUserAll, getUser, createUser, updateUser, deleteUser, deleteUserAll} from '../controllers/userController'
+import { getUserAll, getUser, createUser, updateUser, deleteUser, deleteUserAll } from '../controllers/userController'
 import * as auth from '../middlewares/authMiddleware'; // Middleware que verifica JWT
 
 route.get('/users', auth.authMiddleware, getUserAll); 

@@ -36,19 +36,23 @@ const userSchema = new Schema<IUser> ({
 
 
 // recente Mongodb (colocar apenas no model)
-userSchema.pre('save', async function (next: (err?: Error) => void) {
-  const user = this as IUser
-  if (!user.isModified('password')) return next()
+userSchema.pre('save', async function () {
 
-  try {
-    const salt = await bcrypt.genSalt(10)
-    user.password = await bcrypt.hash(user.password, salt)
-    next()
-  } catch (err) {
-    next(err as Error)
-  }
+ const user = this as IUser
+
+ if (!user.isModified('password'))
+     return
+
+ const salt =
+     await bcrypt.genSalt(10)
+
+ user.password =
+     await bcrypt.hash(
+         user.password,
+         salt
+     )
+
 })
-
 const User = mongoose.model<IUser>("User", userSchema)
 
 export default User
