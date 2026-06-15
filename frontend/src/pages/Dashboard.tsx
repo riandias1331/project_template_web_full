@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3333/api"
+
 export default function Dashboard() {
     const navigate = useNavigate()
     const [users, setUsers] = useState<any[]>([])
@@ -14,6 +16,8 @@ export default function Dashboard() {
             navigate("/login")
         }
     }, [navigate])
+
+    
 
     // Dados falsos do dashboard
     const user = JSON.parse(localStorage.getItem("user") || "{}")
@@ -30,7 +34,7 @@ export default function Dashboard() {
         const token = localStorage.getItem('token')
         
         try {
-            const response = await fetch('http://localhost:3333/api/users', {
+            const response = await fetch(`${API_URL}/users`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             })
             

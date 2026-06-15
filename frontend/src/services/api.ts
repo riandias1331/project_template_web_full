@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:3333/api"
+// ✅ USA VARIÁVEL DE AMBIENTE
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3333/api"
 
 export async function registerUser(name: string, email: string, password: string) {
   const response = await fetch(`${API_URL}/auth/register`, {
@@ -7,12 +8,10 @@ export async function registerUser(name: string, email: string, password: string
     body: JSON.stringify({ name, email, password })
   })
 
-  // 🔥 PEGA A RESPOSTA COMO JSON PRIMEIRO
   const data = await response.json()
 
-  // 🔥 SE NÃO OK, LANÇA A MENSAGEM DO BACKEND
   if (!response.ok) {
-    console.log("Erro do backend:", data)  // 🔥 DEBUG
+    console.log("Erro do backend:", data)
     throw new Error(data.message || "Erro ao registrar")
   }
 
@@ -29,7 +28,7 @@ export async function loginUser(email: string, password: string) {
   const data = await response.json()
 
   if (!response.ok) {
-    console.log("Erro do backend:", data)  // 🔥 DEBUG
+    console.log("Erro do backend:", data)
     throw new Error(data.message || "Erro ao fazer login")
   }
 
