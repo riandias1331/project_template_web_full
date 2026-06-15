@@ -8,9 +8,11 @@ export default function Register() {
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
+  const [success, setSuccess] = useState("")  // 🔥 NOVO: estado para sucesso
 
   async function handleRegister() {
     setError("")
+    setSuccess("")  // 🔥 LIMPA SUCESSO
     
     // Validação básica frontend
     if (!name.trim()) {
@@ -38,18 +40,20 @@ export default function Register() {
     try {
       const data = await registerUser(name, email, password)
       
-      console.log("Resposta do backend:", data)  // 🔥 DEBUG
-      
       if (data.token) {
         localStorage.setItem("token", data.token)
         localStorage.setItem("user", JSON.stringify(data.data))
       }
 
-      alert("Conta criada com sucesso!")
-      window.location.href = "/dashboard"
+      // 🔥 EM VEZ DE ALERT, MOSTRA MENSAGEM NA TELA
+      setSuccess("✅ Conta criada com sucesso! Redirecionando...")
+      
+      // Redireciona após 2 segundos (dá tempo de ver a mensagem)
+      setTimeout(() => {
+        window.location.href = "/dashboard"
+      }, 1500)
 
     } catch (err: any) {
-      console.error("Erro capturado:", err)  // 🔥 DEBUG
       setError(err.message)
     } finally {
       setLoading(false)
@@ -67,7 +71,22 @@ export default function Register() {
 
         <div className="separator">ou</div>
 
-        {/* 🔥 MOSTRA O ERRO NA TELA */}
+        {/* 🔥 MENSAGEM DE SUCESSO */}
+        {success && (
+          <div style={{ 
+            backgroundColor: "#dcfce7", 
+            color: "#166534", 
+            padding: "10px", 
+            borderRadius: "8px", 
+            marginBottom: "15px",
+            textAlign: "center",
+            fontSize: "14px"
+          }}>
+            {success}
+          </div>
+        )}
+
+        {/* 🔥 MENSAGEM DE ERRO */}
         {error && (
           <div style={{ 
             backgroundColor: "#fee2e2", 
