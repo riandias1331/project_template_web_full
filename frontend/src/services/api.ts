@@ -1,6 +1,5 @@
 // api.ts - VERSÃO HARDCODED PARA TESTE
-const API_URL = "http://localhost:3333/api"  // ← COLOCA A URL COMPLETA AQUI!
-
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3333/api"
 export async function registerUser(name: string, email: string, password: string) {
   const response = await fetch(`${API_URL}/auth/register`, {
     method: "POST",
