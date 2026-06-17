@@ -6,8 +6,8 @@ import authRoutes from './routes/authRoutes';
 import pool, { connectMongo } from './config/db';
 import createUserTable from './data/createUserTable';
 import path from "path"
-// import errorHandler from './middlewares/errorHandler'
-//import axios from "axios"
+import errorHandler from './middlewares/errorHandler'
+
 
 // Configuring environment variables
 dotenv.config();
