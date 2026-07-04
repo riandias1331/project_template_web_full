@@ -8,13 +8,12 @@ export default function Register() {
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
-  const [success, setSuccess] = useState("")  // 🔥 NOVO: estado para sucesso
+  const [success, setSuccess] = useState("")
 
   async function handleRegister() {
     setError("")
-    setSuccess("")  // 🔥 LIMPA SUCESSO
+    setSuccess("")
     
-    // Validação básica frontend
     if (!name.trim()) {
       setError("Nome é obrigatório")
       return
@@ -26,7 +25,7 @@ export default function Register() {
     }
     
     if (!email.includes("@")) {
-      setError("Email inválido (falta @)")
+      setError("Email inválido")
       return
     }
     
@@ -45,10 +44,8 @@ export default function Register() {
         localStorage.setItem("user", JSON.stringify(data.data))
       }
 
-      // 🔥 EM VEZ DE ALERT, MOSTRA MENSAGEM NA TELA
       setSuccess("✅ Conta criada com sucesso! Redirecionando...")
       
-      // Redireciona após 2 segundos (dá tempo de ver a mensagem)
       setTimeout(() => {
         window.location.href = "/dashboard"
       }, 1500)
@@ -61,48 +58,31 @@ export default function Register() {
   }
 
   return (
-    <div className="login">
+    <div className="register">
       <div className="card">
+        <div className="badge">🔐 System Pro 2026</div>
         <h1>Criar Conta</h1>
-        <p>Cadastre sua conta</p>
+        <p>Entre para o futuro</p>
 
-        <button className="social google">Continuar com Google</button>
-        <button className="social github">Continuar com GitHub</button>
+        <button className="social google">🔵 Continuar com Google</button>
+        <button className="social github">⚫ Continuar com GitHub</button>
 
         <div className="separator">ou</div>
 
-        {/* 🔥 MENSAGEM DE SUCESSO */}
         {success && (
-          <div style={{ 
-            backgroundColor: "#dcfce7", 
-            color: "#166534", 
-            padding: "10px", 
-            borderRadius: "8px", 
-            marginBottom: "15px",
-            textAlign: "center",
-            fontSize: "14px"
-          }}>
+          <div className="success-message">
             {success}
           </div>
         )}
 
-        {/* 🔥 MENSAGEM DE ERRO */}
         {error && (
-          <div style={{ 
-            backgroundColor: "#fee2e2", 
-            color: "#dc2626", 
-            padding: "10px", 
-            borderRadius: "8px", 
-            marginBottom: "15px",
-            textAlign: "center",
-            fontSize: "14px"
-          }}>
-            ❌ {error}
+          <div className="error-message">
+            ✕ {error}
           </div>
         )}
 
         <input
-          placeholder="Nome"
+          placeholder="Nome completo"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
@@ -116,17 +96,17 @@ export default function Register() {
 
         <input
           type="password"
-          placeholder="Senha (mínimo 6 caracteres)"
+          placeholder="Senha (6+ caracteres)"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
 
         <button 
-          className="login-btn" 
+          className="register-btn" 
           onClick={handleRegister}
           disabled={loading}
         >
-          {loading ? "Cadastrando..." : "Criar Conta"}
+          {loading ? "⏳ Cadastrando..." : "→ Criar Conta"}
         </button>
 
         <span>

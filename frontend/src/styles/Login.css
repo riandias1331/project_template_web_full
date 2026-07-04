@@ -1,169 +1,298 @@
-body{
-background:white;
-color:black;
-font-family:Inter,sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.login{
-min-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
+body {
+  background: #000000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
 }
 
-.card{
-
-width:420px;
-
-padding:50px;
-
-border:1px solid #eee;
-
-border-radius:20px;
-
-box-shadow:
-0 10px 40px
-rgba(0,0,0,.05);
+.login, .register {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000000;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
 }
 
-h1{
-margin-bottom:10px;
+/* Grid futurista */
+.login::before, .register::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
 }
 
-p{
-color:#666;
+/* Pontos de luz */
+.login::after, .register::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.15), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.1), transparent),
+    radial-gradient(2px 2px at 50px 160px, rgba(255, 255, 255, 0.12), transparent),
+    radial-gradient(2px 2px at 90px 40px, rgba(255, 255, 255, 0.08), transparent),
+    radial-gradient(2px 2px at 130px 80px, rgba(255, 255, 255, 0.15), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(255, 255, 255, 0.1), transparent);
+  background-size: 200px 200px;
+  pointer-events: none;
 }
 
-.social{
-
-width:100%;
-
-padding:16px;
-
-border:none;
-
-border-radius:12px;
-
-margin-top:15px;
-
-cursor:pointer;
-
-font-size:16px;
+.card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  padding: 50px 40px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-.google{
-
-background:#fff;
-
-border:1px solid #ddd;
+.badge {
+  display: inline-block;
+  padding: 6px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
 }
 
-.github{
-
-background:black;
-
-color:white;
+h1 {
+  font-size: 32px;
+  color: #ffffff;
+  margin-bottom: 6px;
+  font-weight: 300;
+  letter-spacing: -0.5px;
 }
 
-.separator{
-
-text-align:center;
-
-margin:25px;
+p {
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 28px;
+  font-size: 15px;
+  font-weight: 300;
 }
 
-input{
-
-width:100%;
-
-padding:16px;
-
-margin-top:12px;
-
-border:1px solid #ddd;
-
-border-radius:12px;
-
-box-sizing:border-box;
-}
-
-.error-message {
-  background-color: #fee2e2;
-  color: #dc2626;
-  padding: 10px;
-  border-radius: 8px;
+.social {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  margin-top: 10px;
+  cursor: pointer;
   font-size: 14px;
-  margin-bottom: 15px;
-  text-align: center;
-  border: 1px solid #fecaca;
+  font-weight: 400;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
 }
 
-/* Mensagem de sucesso */
+.social:hover {
+  transform: translateY(-1px);
+}
+
+.google {
+  background: rgba(255, 255, 255, 0.03);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.google:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.github {
+  background: rgba(255, 255, 255, 0.02);
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.github:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.separator {
+  text-align: center;
+  margin: 24px 0;
+  color: rgb(255, 255, 255);
+  font-size: 13px;
+  font-weight: 300;
+  position: relative;
+  letter-spacing: 1px;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 30%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.separator::before {
+  left: 0;
+}
+
+.separator::after {
+  right: 0;
+}
+
 .success-message {
-  background-color: #dcfce7;
-  color: #166534;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  text-align: center;
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 12px;
+  border-radius: 12px;
   font-size: 14px;
-  border: 1px solid #bbf7d0;
+  margin-bottom: 16px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Mensagem de erro */
 .error-message {
-  background-color: #fee2e2;
-  color: #dc2626;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  text-align: center;
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 12px;
+  border-radius: 12px;
   font-size: 14px;
-  border: 1px solid #fecaca;
+  margin-bottom: 16px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.login-btn{
-
-width:100%;
-
-padding:16px;
-
-margin-top:20px;
-
-background:black;
-
-color:white;
-
-border:none;
-
-border-radius:12px;
-
-cursor:pointer;
+input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-top: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 300;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
-.login-btn:hover{
-
-opacity:.9;
+input::placeholder {
+  color: rgb(255, 255, 255);
+  font-weight: 300;
 }
 
-a{
-
-margin-left:6px;
-
-color:black;
-
-font-weight:600;
+input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
 }
 
-span{
-display:flex;
+.forgot-password {
+  text-align: right;
+  margin-top: 8px;
+}
 
-justify-content:center;
+.forgot-password a {
+  color: rgb(255, 255, 255);
+  font-size: 13px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 300;
+}
 
-gap:6px;
+.forgot-password a:hover {
+  color: rgb(255, 255, 255);
+}
 
-margin-top:24px;
+.login-btn, .register-btn {
+  width: 100%;
+  padding: 16px;
+  margin-top: 20px;
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.login-btn:hover:not(:disabled), 
+.register-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 40px rgba(255, 255, 255, 0.05);
+}
+
+.login-btn:disabled, 
+.register-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+span {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 24px;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  font-weight: 300;
+}
+
+span a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+
+span a:hover {
+  color: #ffffff;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .login, .register {
+    padding: 16px;
+  }
+  
+  .card {
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+  
+  h1 {
+    font-size: 26px;
+  }
+  
+  input {
+    font-size: 14px;
+  }
+  
+  .social {
+    font-size: 13px;
+  }
 }

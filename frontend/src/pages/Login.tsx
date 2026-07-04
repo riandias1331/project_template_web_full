@@ -6,7 +6,7 @@ export default function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState("")  // 🔥 NOVO
+  const [error, setError] = useState("")
 
   async function handleLogin() {
     setError("")
@@ -32,7 +32,6 @@ export default function Login() {
       window.location.href = "/dashboard"
 
     } catch (err: any) {
-      // 🔥 EXIBE MENSAGEM DO BACKEND ("Invalid credentials" etc)
       setError(err.message)
       console.error(err)
     } finally {
@@ -43,15 +42,15 @@ export default function Login() {
   return (
     <div className="login">
       <div className="card">
-        <h1>Entrar</h1>
-        <p>Entre com sua conta</p>
+        <div className="badge">🔐 System Pro</div>
+        <h1>Bem-vindo de volta</h1>
+        <p>Entre com sua conta para continuar</p>
 
-        <button className="social google">Continuar com Google</button>
-        <button className="social github">Continuar com GitHub</button>
+        <button className="social google">🔵 Continuar com Google</button>
+        <button className="social github">⚫ Continuar com GitHub</button>
 
-        <div className="separator">ou</div>
+        <div className="separator">ou continue com email</div>
 
-        {/* 🔥 MENSAGEM DE ERRO */}
         {error && (
           <div className="error-message">
             ❌ {error}
@@ -59,24 +58,28 @@ export default function Login() {
         )}
 
         <input
-          placeholder="Email"
+          placeholder="📧 seu@email.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
 
         <input
           type="password"
-          placeholder="Senha"
+          placeholder="🔒 Sua senha"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+
+        <div className="forgot-password">
+          <a href="/forgot-password">Esqueceu sua senha?</a>
+        </div>
 
         <button 
           className="login-btn" 
           onClick={handleLogin}
           disabled={loading}
         >
-          {loading ? "Entrando..." : "Entrar"}
+          {loading ? "⏳ Entrando..." : "⚡ Entrar"}
         </button>
 
         <span>
