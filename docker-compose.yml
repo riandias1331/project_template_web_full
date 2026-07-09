@@ -64,8 +64,10 @@ services:
       - "5173:5173"
     environment:
       #- VITE_API_URL=http://${VM_IP:-localhost}:3333/api
-      - VITE_API_URL=http://backend:3333/api
+     # - VM_IP=http://3.137.151.175
+     # - VITE_API_URL=http://backend:3333
 
+     - VITE_API_URL=http://3.134.116.31:3333
     env_file:
       - ./frontend/.env
     networks:
