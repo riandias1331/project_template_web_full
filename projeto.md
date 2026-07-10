@@ -1,3 +1,22 @@
+usar seu repositório template-web como base e depois trocar o repositório remoto para um novo projeto.
+
+Opção 1 (recomendada)
+Clone o template:
+git clone https://github.com/seu-usuario/template-web.git projeto1
+Entre na pasta:
+cd projeto1
+Remova a conexão com o repositório antigo:
+git remote remove origin
+Crie um repositório vazio no GitHub chamado projeto1.
+Conecte o projeto ao novo repositório:
+git remote add origin https://github.com/seu-usuario/projeto1.git
+Envie o código:
+git push -u origin main
+
+(ou master, dependendo da sua branch principal.)
+
+A partir daí, todos os git add, git commit e git push irão para projeto1, e não para template-web.
+
 Stack Completa
 Front-end
 React
