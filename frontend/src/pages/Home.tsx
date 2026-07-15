@@ -10,13 +10,14 @@ export default function Home() {
         <div className="hero-content">
           <div className="badge">⚡ PLATFORM</div>
           <h1>Bem-vindo ao</h1>
-          <h1 className="gradient-text">System Pro</h1>
-          <p>Sua plataforma completa para gerenciar seus negócios</p>
+          <h1 className="gradient-text">System Pro</h1> <br />
+          {/* <p>Sua plataforma completa para gerenciar seus negócios</p> */}
 
+          {/* 
           <div className="features">
             <div className="features">
-              {/* <span>⚡ Backend</span>
-              <span>🚀 Frontend</span> */}
+              <span>⚡ Backend</span>
+              <span>🚀 Frontend</span>
               <span>☁️ Cloud</span>
               <span>🤖 IA</span>
               <span>🎮 Games</span>
@@ -29,10 +30,11 @@ export default function Home() {
               <span>🌍 DevOps</span>
               <span>🔗 Blockchain</span>
               <span>🖥️ IoT</span>
-              {/* <span>📡 5G</span> */}
-              {/* <span>🧠 Machine Learning</span> */}
+              <span>📡 5G</span>
+              <span>🧠 Machine Learning</span>
             </div>
           </div>
+           */}
 
           <div className="buttons">
             {token ? (
