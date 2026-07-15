@@ -5,4 +5,9 @@ node_modules
 # folders
 nginx
 infra
-github
+.github
+
+
+# files
+projeto.md
+readme.md.full.IA.md
