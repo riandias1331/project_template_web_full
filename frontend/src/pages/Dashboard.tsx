@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import "../styles/Dashboard.css"
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3333/api"
+// const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3333/api"
 
 export default function Dashboard() {
   const navigate = useNavigate()
